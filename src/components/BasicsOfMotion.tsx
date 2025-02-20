@@ -14,9 +14,8 @@ export default function BasicsOfMotion({
   return (
     <div
       style={{
-        paddingBottom: 200,
         width: "100%",
-        marginBlock: 300,
+        marginBlock: 400,
         // border: "2px solid red",
       }}
       className="overflow-hidde z-10 w-full flex flex-col place-items-end gap-2 "
@@ -34,15 +33,16 @@ function Card({ song, playNextTrack }) {
       className="overflow-auto flex justify-center md:justify-left"
       style={{
         opacity: 0.7,
-        // border: "2px solid red",
-        width: 600,
-        margin: "150px",
+        // border: "2px solid blue",
+        margin: "50px",
+        scrollSnapAlign: "start",
       }}
       whileInView={{
         // width: 500,
         flexGrow: 1,
         opacity: 1,
-        // border: "2px solid red",
+        // border: "2px solid yellow",
+        // scrollSnapAlign: [0, 100, 200],
       }}
       onViewportEnter={() => {
         playNextTrack(song);
@@ -53,8 +53,8 @@ function Card({ song, playNextTrack }) {
       }}
       layout
       viewport={{
-        margin: "-500px 0px -500px 0px",
-        amount: 1,
+        margin: "-400px 0px",
+        amount: 0.6,
       }}
     >
       <div className="flex flex-col">

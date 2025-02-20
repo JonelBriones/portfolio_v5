@@ -1,5 +1,7 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import "../App.css";
+import { HiMiniSpeakerWave } from "react-icons/hi2";
+import { HiMiniSpeakerXMark } from "react-icons/hi2";
 
 import BasicsOfMotion from "./BasicsOfMotion.js";
 
@@ -203,21 +205,21 @@ const songs: Song[] = [
     artist: "Smile. dk",
   },
   {
-    name: "SONG 10",
-    path: "src/assets/music/BOYS (2008 X-edit).mp3",
+    name: "BOYS (2008 X-edit)",
+    path: "src/assets/music/Naruto Shippuden Op Opening 6.mp3",
     project: {
       name: "notes",
       url: "",
-      image: "src/assets/images/notes_dashboard_view.png",
+      image: "src/assets/images/projectfeedbackboard_view.png",
     },
 
     bpm: 138,
     mode: {
-      beginner: Math.floor(Math.random() * 10),
-      basic: Math.floor(Math.random() * 10),
-      difficult: Math.floor(Math.random() * 10),
-      expert: Math.floor(Math.random() * 10),
-      challenge: Math.floor(Math.random() * 10),
+      beginner: 2,
+      basic: 5,
+      difficult: 6,
+      expert: 10,
+      challenge: 5,
     },
     previewStart: "0:33",
     artist: "Smile. dk",
@@ -227,12 +229,16 @@ const modes = ["beginner", "basic", "difficult", "expert", "challenge"];
 
 const Main = () => {
   const [previewSong, setPreviewSong] = useState<Song>(songs[0]);
-  const [audio, setAudio] = useState(new Audio(previewSong.path));
-
+  const [audio] = useState(new Audio(previewSong.path));
+  const [audioIsMuted, setAudioIsMuted] = useState(true);
+  const [audioIsPaused, setAudioIsPaused] = useState(true);
   const audioRef = useRef(null);
-
+  useEffect(() => {
+    if (!audioRef.current) {
+      audioRef?.current?.play(previewSong.path);
+    }
+  }, []);
   const playNextTrack = (song: Song) => {
-    console.log("next song", audio);
     if (audio) {
       console.log("next song", audio);
       audio.pause();
@@ -241,6 +247,10 @@ const Main = () => {
       audio.play();
       setPreviewSong(song);
     }
+  };
+
+  const muteSong = () => {
+    audio.muted = true;
   };
 
   const modeBars = (value: number) => {
@@ -257,20 +267,60 @@ const Main = () => {
   };
 
   return (
-    <div className="md:flex overflow-auto relative">
-      <div className="absolute top-0 right-0 m-5 flex">
-        <button
-          onClick={() => audio.pause()}
-          className=" text-white p-2 border block"
-        >
-          PAUSE
-        </button>
+    <div className="md:flex overflow-auto relative w-full border">
+      <div className="absolute text-white  top-0 right-0 m-5 z-10 h-[40px]">
+        {}
+        {/* {!audioIsPaused  ? (
+          <button onClick={() => audio.pause()} className="  p-2 border block">
+            PAUSE {audio.duration}
+            {audio.paused ? "true" : "false"}
+          </button>
+        ) : (
+          <button onClick={() => audio.play()} className=" p-2 border block">
+            Play
+          </button>
+        )} */}
 
+        {/* {audioIsMuted ? (
+          <button
+            onClick={() => {
+              audio.muted = false;
+              audio.play();
+              setAudioIsMuted(false);
+            }}
+            className=" p-2 border block"
+          >
+            <HiMiniSpeakerXMark size={"2rem"} />
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              audio.muted = true;
+              setAudioIsMuted(true);
+            }}
+            className=" p-2 border block"
+          >
+            <HiMiniSpeakerWave size={"2rem"} />
+          </button>
+        )} */}
         <button
-          onClick={() => audio.play()}
-          className=" text-white p-2 border block"
+          onClick={() => {
+            if (audioIsMuted) {
+              audio.muted = false;
+              audio.play();
+              setAudioIsMuted(false);
+            } else {
+              audio.muted = true;
+              setAudioIsMuted(true);
+            }
+          }}
+          className="p-2 cursor-pointer"
         >
-          PLAY
+          {audioIsMuted ? (
+            <HiMiniSpeakerXMark size={"2rem"} />
+          ) : (
+            <HiMiniSpeakerWave size={"2rem"} />
+          )}
         </button>
       </div>
 
@@ -281,7 +331,9 @@ const Main = () => {
             <div>
               <div className="flex flex-col w-full">
                 <div className="flex flex-col p-5">
-                  <h1 className="text-4xl">{previewSong.project.name}</h1>
+                  <h1 className="text-4xl uppercase">
+                    {previewSong.project.name}
+                  </h1>
                   <h4 className="text-3xl">{previewSong?.name}</h4>
                 </div>
                 <span className="p-2 text-right">
@@ -322,9 +374,9 @@ const Main = () => {
       </div>
 
       {/* MUSIC SELECT */}
-      <div className="flex relative">
+      <div className="flex flex-1 md:w-[500px] justify-center relative place-items-center">
         <div className="absolute bg-sky-200 mix-blend-soft-light top-0 bottom-0 left-0 right-0" />
-        <div className="z-10 overflow-y-auto flex flex-r md:flex-col scrollbar-hide">
+        <div className="z-20 overflow-y-auto flex flex-r md:flex-col scrollbar-hide md:h-[600px]">
           <BasicsOfMotion
             songs={songs}
             playNextTrack={playNextTrack}
