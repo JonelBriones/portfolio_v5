@@ -1,12 +1,17 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import "../App.css";
-import { motion } from "motion/react";
 
 import BasicsOfMotion from "./BasicsOfMotion.js";
-import ScrollTriggered from "./ScrollTriggered.js";
+
 type Song = {
   name: string;
   path: string;
+  project: {
+    name: "notes";
+    url: "";
+    image: "src/assets/images/notes_dashboard_view.png";
+  };
+
   bpm: number;
   mode: {
     beginner: number;
@@ -23,6 +28,11 @@ const songs: Song[] = [
   {
     name: "Big Girls Don't Cry",
     path: "src/assets/music/Big Girls Don't Cry.mp3",
+    project: {
+      name: "notes",
+      url: "",
+      image: "src/assets/images/notes_dashboard_view.png",
+    },
     bpm: 125,
     mode: {
       beginner: 2,
@@ -37,6 +47,12 @@ const songs: Song[] = [
   {
     name: "BOYS (2008 X-edit)",
     path: "src/assets/music/BOYS (2008 X-edit).mp3",
+    project: {
+      name: "notes",
+      url: "",
+      image: "src/assets/images/projectfeedbackboard_view.png",
+    },
+
     bpm: 138,
     mode: {
       beginner: 2,
@@ -49,8 +65,14 @@ const songs: Song[] = [
     artist: "Smile. dk",
   },
   {
-    name: "SONG 3",
-    path: "src/assets/music/BOYS (2008 X-edit).mp3",
+    name: "Sign / OP 6",
+    path: "src/assets/music/Naruto Shippuden Op Opening 6.mp3",
+    project: {
+      name: "notes",
+      url: "",
+      image: "src/assets/images/notes_dashboard_view.png",
+    },
+
     bpm: 138,
     mode: {
       beginner: Math.floor(Math.random() * 10),
@@ -60,11 +82,17 @@ const songs: Song[] = [
       challenge: Math.floor(Math.random() * 10),
     },
     previewStart: "0:33",
-    artist: "Smile. dk",
+    artist: "Naruto Shippuden",
   },
   {
-    name: "SONG 4",
-    path: "src/assets/music/BOYS (2008 X-edit).mp3",
+    name: "Hotaru no Hikari / OP 5",
+    path: "src/assets/music/Naruto shippuden Op  Opening  5.mp3",
+    project: {
+      name: "notes",
+      url: "",
+      image: "src/assets/images/notes_dashboard_view.png",
+    },
+
     bpm: 138,
     mode: {
       beginner: Math.floor(Math.random() * 10),
@@ -74,11 +102,17 @@ const songs: Song[] = [
       challenge: Math.floor(Math.random() * 10),
     },
     previewStart: "0:33",
-    artist: "Smile. dk",
+    artist: "Naruto Shippuden",
   },
   {
     name: "SONG 5",
     path: "src/assets/music/BOYS (2008 X-edit).mp3",
+    project: {
+      name: "notes",
+      url: "",
+      image: "src/assets/images/notes_dashboard_view.png",
+    },
+
     bpm: 138,
     mode: {
       beginner: Math.floor(Math.random() * 10),
@@ -93,6 +127,12 @@ const songs: Song[] = [
   {
     name: "SONG 6",
     path: "src/assets/music/BOYS (2008 X-edit).mp3",
+    project: {
+      name: "notes",
+      url: "",
+      image: "src/assets/images/notes_dashboard_view.png",
+    },
+
     bpm: 138,
     mode: {
       beginner: Math.floor(Math.random() * 10),
@@ -106,6 +146,12 @@ const songs: Song[] = [
   {
     name: "SONG 7",
     path: "src/assets/music/BOYS (2008 X-edit).mp3",
+    project: {
+      name: "notes",
+      url: "",
+      image: "src/assets/images/notes_dashboard_view.png",
+    },
+
     bpm: 138,
     mode: {
       beginner: Math.floor(Math.random() * 10),
@@ -119,6 +165,12 @@ const songs: Song[] = [
   {
     name: "SONG 8",
     path: "src/assets/music/BOYS (2008 X-edit).mp3",
+    project: {
+      name: "notes",
+      url: "",
+      image: "src/assets/images/notes_dashboard_view.png",
+    },
+
     bpm: 138,
     mode: {
       beginner: Math.floor(Math.random() * 10),
@@ -133,6 +185,12 @@ const songs: Song[] = [
   {
     name: "SONG 9",
     path: "src/assets/music/BOYS (2008 X-edit).mp3",
+    project: {
+      name: "notes",
+      url: "",
+      image: "src/assets/images/notes_dashboard_view.png",
+    },
+
     bpm: 138,
     mode: {
       beginner: Math.floor(Math.random() * 10),
@@ -147,6 +205,12 @@ const songs: Song[] = [
   {
     name: "SONG 10",
     path: "src/assets/music/BOYS (2008 X-edit).mp3",
+    project: {
+      name: "notes",
+      url: "",
+      image: "src/assets/images/notes_dashboard_view.png",
+    },
+
     bpm: 138,
     mode: {
       beginner: Math.floor(Math.random() * 10),
@@ -164,23 +228,8 @@ const modes = ["beginner", "basic", "difficult", "expert", "challenge"];
 const Main = () => {
   const [previewSong, setPreviewSong] = useState<Song>(songs[0]);
   const [audio, setAudio] = useState(new Audio(previewSong.path));
+
   const audioRef = useRef(null);
-
-  //   const playAudio = () => {
-  //     const audio = new Audio(previewSong.path);
-  //     console.log("playing audio", audio);
-  //     audio.play();
-  //   };
-
-  //   useEffect(() => {
-  //     const handleInteraction = () => {
-  //       playAudio();
-  //       document.removeEventListener("click", handleInteraction);
-  //     };
-
-  //     document.addEventListener("click", handleInteraction);
-  //     return () => document.removeEventListener("click", handleInteraction);
-  //   }, []);
 
   const playNextTrack = (song: Song) => {
     console.log("next song", audio);
@@ -188,6 +237,7 @@ const Main = () => {
       console.log("next song", audio);
       audio.pause();
       audio.src = song.path;
+
       audio.play();
       setPreviewSong(song);
     }
@@ -207,11 +257,8 @@ const Main = () => {
   };
 
   return (
-    <div className="flex ">
-      <div className="absolute top-0 right-0 m-5">
-        {/* <button onClick={play} className="p-2">
-          START
-        </button> */}
+    <div className="md:flex overflow-auto relative">
+      <div className="absolute top-0 right-0 m-5 flex">
         <button
           onClick={() => audio.pause()}
           className=" text-white p-2 border block"
@@ -225,30 +272,30 @@ const Main = () => {
         >
           PLAY
         </button>
-        {/* <button onClick={playNextTrack} className="p-2 border">
-          HOVER SONG
-        </button> */}
       </div>
-      <div className="flex justify-between p-5 h-[700px] flex-1">
-        <div className="flex flex-col gap-2 pl-10 relative text-white">
-          <div className="absolute  bg-sky-200 mix-blend-soft-light top-0 bottom-0 left-0 right-0" />
-          <div className="mix-blend-hard-light">
-            <div className="p-5">select music</div>
-            <div className="flex flex-col w-full">
-              <div className="flex flex-col p-5">
-                <h1 className="text-4x1"> project name</h1>
-                <h4 className="text-lg">{previewSong?.name}</h4>
-              </div>
-              <span className="p-2 text-right">
-                1st stage bpm{previewSong.bpm}
-              </span>
-            </div>
-            <div className="flex justify-center">
-              <div className="rounded-full w-[100px] h-[100px] border m-5">
-                wheel stats
+
+      <div className="flex relative text-white">
+        <div className="absolute  bg-sky-200 mix-blend-soft-light top-0 bottom-0 left-0 right-0" />
+        <div className="mix-blend-hard-light flex">
+          <div className="flex flex-col justify-between">
+            <div>
+              <div className="flex flex-col w-full">
+                <div className="flex flex-col p-5">
+                  <h1 className="text-4xl">{previewSong.project.name}</h1>
+                  <h4 className="text-3xl">{previewSong?.name}</h4>
+                </div>
+                <span className="p-2 text-right">
+                  1st stage bpm{previewSong.bpm}
+                </span>
               </div>
             </div>
-            <div className="p-5 flex flex-col w-full">
+            {/* <div className="flex justify-center w">
+              <img
+                src={`/${previewSong.project.image}`}
+                className="w-full bg-cover"
+              />
+            </div> */}
+            <div className="p-5 flex flex-col w-[400px] pl-10 ">
               {modes.map((mode) => (
                 <div className="flex justify-between" key={mode}>
                   <p
@@ -259,7 +306,7 @@ const Main = () => {
                     {mode.toUpperCase()}
                   </p>
                   <div className="flex flex-1 gap-2 place-items-center justify-between">
-                    <span className="text-2xl text-neutral-300 h-[30px]">
+                    <span className="flex place-items-center text-2xl text-neutral-300 h-[30px]">
                       {previewSong.mode[mode]}
                     </span>
                     <div className="flex gap-1 h-[24px]">
@@ -272,20 +319,17 @@ const Main = () => {
             </div>
           </div>
         </div>
-        <div className="flex overflow-hidden relative flex-1">
-          <div className="absolute bg-sky-200 mix-blend-soft-light top-0 bottom-0 left-0 right-0" />
-          <div className="z-10 overflow-auto w-full">
-            {/* <ScrollTriggered songs={songs} playNextTrack={playNextTrack} /> */}
-            {songs.map((song, idx) => (
-              <Fragment key={idx}>
-                <BasicsOfMotion
-                  song={song}
-                  playNextTrack={playNextTrack}
-                  audio={audio}
-                />
-              </Fragment>
-            ))}
-          </div>
+      </div>
+
+      {/* MUSIC SELECT */}
+      <div className="flex relative">
+        <div className="absolute bg-sky-200 mix-blend-soft-light top-0 bottom-0 left-0 right-0" />
+        <div className="z-10 overflow-y-auto flex flex-r md:flex-col scrollbar-hide">
+          <BasicsOfMotion
+            songs={songs}
+            playNextTrack={playNextTrack}
+            audio={audio}
+          />
         </div>
       </div>
     </div>
