@@ -145,7 +145,7 @@ const Main = () => {
     pointerEvents: "none",
   };
   return (
-    <div className="md:flex w-full h-[60vh] overflow-hidden">
+    <div className="md:flex w-full h-screen md:h-[60vh] overflow-auto md:overflow-hidden">
       <motion.div
         style={{
           ...mouseStyle,
