@@ -12,11 +12,11 @@ type ModeType = "beginner" | "basic" | "difficult" | "expert" | "challenge";
 const songs: Song[] = [
   {
     name: "Big Girls Don't Cry",
-    path: "src/assets/music/Big Girls Don't Cry.mp3",
+    path: "/music/Big Girls Don't Cry.mp3",
     project: {
-      name: "notes",
+      name: "Noted",
       url: "https://noted-ebon.vercel.app",
-      image: "src/assets/images/notes_dashboard_view.png",
+      image: "public/images/notes_dashboard_view.png",
     },
     bpm: 125,
     mode: {
@@ -30,11 +30,11 @@ const songs: Song[] = [
   },
   {
     name: "BOYS (2008 X-edit)",
-    path: "src/assets/music/BOYS (2008 X-edit).mp3",
+    path: "/music/BOYS (2008 X-edit).mp3",
     project: {
-      name: "notes",
+      name: "Project Feedback Board",
       url: "https://project-feedback-board.vercel.app",
-      image: "src/assets/images/projectfeedbackboard_view.png",
+      image: "public/images/projectfeedbackboard_view.png",
     },
 
     bpm: 138,
@@ -50,11 +50,11 @@ const songs: Song[] = [
   },
   {
     name: "Sign / OP 6",
-    path: "src/assets/music/Naruto Shippuden Op Opening 6.mp3",
+    path: "/music/Naruto Shippuden Op Opening 6.mp3",
     project: {
-      name: "notes",
+      name: "Gymualizer",
       url: "https://github.com/JonelBriones/gymualizer.io",
-      image: "src/assets/images/gymualizer.png",
+      image: "public/images/gymualizer.png",
     },
 
     bpm: 138,
@@ -70,11 +70,11 @@ const songs: Song[] = [
   },
   {
     name: "Hero's Come Back / OP 1",
-    path: "src/assets/music/Naruto Shippuden - Opening 1 (HD - 60 fps).mp3",
+    path: "/music/Naruto Shippuden - Opening 1 (HD - 60 fps).mp3",
     project: {
-      name: "notes",
+      name: "Chatters",
       url: "https://chatters-sigma.vercel.app",
-      image: "src/assets/images/chatters.png",
+      image: "public/images/chatters.png",
     },
 
     bpm: 138,
@@ -127,8 +127,6 @@ const Main = () => {
   const handleMouseMove = (e: MouseEvent) => {
     mousePosition.x.set(e.clientX - cursorSize / 2);
     mousePosition.y.set(e.clientY - cursorSize / 2);
-    // console.log("client", e.clientX, e.clientY);
-    // console.log("mouse", mousePosition.x, mousePosition.y);
   };
   useEffect(() => {
     window.addEventListener("mousemove", handleMouseMove);
@@ -155,7 +153,6 @@ const Main = () => {
           y: mousePosition.y,
           width: cursorSize,
           height: cursorSize,
-          //   zIndex: 100,
         }}
         animate={{
           scale: projectHover ? 1.5 : 1,
@@ -209,19 +206,16 @@ const Main = () => {
         </button>
       </div>
 
-      <div className="flex relative text-white">
+      <div className="flex relative text-white w-[500px]">
         <div className="mix-blend-hard-light flex">
           <div className="flex flex-col justify-between">
-            <div>
-              <div className="flex flex-col w-full">
-                <div className="flex flex-col p-5">
-                  <h1 className="text-4xl uppercase">
-                    {previewSong.project.name}
-                  </h1>
-                  <h4 className="text-3xl">{previewSong?.name}</h4>
-                </div>
-              </div>
+            <div className="flex flex-col p-5">
+              <h1 className="text-4xl uppercase text-wrap">
+                {previewSong.project.name}
+              </h1>
+              <h4 className="text-3xl">{previewSong?.name}</h4>
             </div>
+
             <div className="p-5 flex flex-col w-[400px] pl-10 select-none">
               {modes.map((mode) => (
                 <div className="flex justify-between" key={mode}>
