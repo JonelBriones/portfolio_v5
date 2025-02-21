@@ -2,7 +2,24 @@
 
 body {
   font-family: Poppins, sans-serif, monospace;
+  cursor: none;
 }
 html {
   scroll-snap-type: mandatory;
+}
+
+.scrollSnap {
+  scroll-snap-align: start;
+}
+.scrollSnapContainer {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.cursor {
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+
+  background-color: white;
 }

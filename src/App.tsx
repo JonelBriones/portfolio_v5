@@ -12,7 +12,7 @@ function App() {
         height: "100vh",
       }}
     >
-      <div className="container flex-col md:flex-row flex h-screen overflow-hidden">
+      <div className="container flex-col md:flex-row flex place-items-center  h-screen overflow-hidden">
         <Main />
       </div>
     </div>
