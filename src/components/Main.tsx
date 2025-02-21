@@ -108,13 +108,14 @@ const Main = () => {
   };
 
   const modeBars = (value: number | null) => {
+    const modeValue = value ? value : 0;
     return Array(10)
       .fill(null)
-      .map((bar, idx) => (
+      .map((_, idx) => (
         <div
           key={idx}
           className={`w-[15px]  drop-shadow-sm drop-shadow-black ${
-            idx + 1 <= value ? "bg-[#FFEA00]" : "bg-slate-400 opacity-70"
+            idx + 1 <= modeValue ? "bg-[#FFEA00]" : "bg-slate-400 opacity-70"
           }`}
         />
       ));
