@@ -46,9 +46,9 @@ function Card({
         opacity: 0.7,
         margin: "50px",
         scrollSnapAlign: "start",
+        paddingTop: 40,
       }}
       whileInView={{
-        // width: 500,
         flexGrow: 1,
         opacity: 1,
       }}
@@ -61,7 +61,7 @@ function Card({
       }}
       layout
       viewport={{
-        margin: "-400px 0px",
+        margin: "-200px 0px",
         amount: 0.6,
       }}
       onMouseEnter={() => {
