@@ -5,7 +5,7 @@ function App() {
     <div
       className="flex justify-center relative overflow-hidden"
       style={{
-        backgroundImage: `url(public/images/your-name-8k.jpg)`,
+        backgroundImage: `url(images/your-name-8k.jpg)`,
         backgroundSize: "cover",
         height: "100vh",
       }}

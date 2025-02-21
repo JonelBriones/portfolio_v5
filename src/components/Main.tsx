@@ -12,11 +12,11 @@ type ModeType = "beginner" | "basic" | "difficult" | "expert" | "challenge";
 const songs: Song[] = [
   {
     name: "Big Girls Don't Cry",
-    path: "/music/Big Girls Don't Cry.mp3",
+    path: "music/Big Girls Don't Cry.mp3",
     project: {
       name: "Noted",
       url: "https://noted-ebon.vercel.app",
-      image: "public/images/notes_dashboard_view.png",
+      image: "images/notes_dashboard_view.png",
     },
     bpm: 125,
     mode: {
@@ -30,11 +30,11 @@ const songs: Song[] = [
   },
   {
     name: "BOYS (2008 X-edit)",
-    path: "/music/BOYS (2008 X-edit).mp3",
+    path: "music/BOYS (2008 X-edit).mp3",
     project: {
       name: "Project Feedback Board",
       url: "https://project-feedback-board.vercel.app",
-      image: "public/images/projectfeedbackboard_view.png",
+      image: "images/projectfeedbackboard_view.png",
     },
 
     bpm: 138,
@@ -50,11 +50,11 @@ const songs: Song[] = [
   },
   {
     name: "Sign / OP 6",
-    path: "/music/Naruto Shippuden Op Opening 6.mp3",
+    path: "music/Naruto Shippuden Op Opening 6.mp3",
     project: {
       name: "Gymualizer",
       url: "https://github.com/JonelBriones/gymualizer.io",
-      image: "public/images/gymualizer.png",
+      image: "images/gymualizer.png",
     },
 
     bpm: 138,
@@ -70,11 +70,11 @@ const songs: Song[] = [
   },
   {
     name: "Hero's Come Back / OP 1",
-    path: "/music/Naruto Shippuden - Opening 1 (HD - 60 fps).mp3",
+    path: "music/Naruto Shippuden - Opening 1 (HD - 60 fps).mp3",
     project: {
       name: "Chatters",
       url: "https://chatters-sigma.vercel.app",
-      image: "public/images/chatters.png",
+      image: "images/chatters.png",
     },
 
     bpm: 138,
